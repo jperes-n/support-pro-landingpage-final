@@ -1,0 +1,52 @@
+<!-- obrigado.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chamado Enviado!</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link para seu CSS principal -->
+  <style>
+    /* Estilos específicos para a página de obrigado, podem ser movidos para style.css */
+    body {
+      font-family: 'Segoe UI', sans-serif; /* Mantém a consistência da fonte */
+      text-align: center;
+      padding: 50px;
+      background-color: var(--cor-fundo-geral-escuro, #1A072E); /* Cor de fundo do seu site */
+      color: var(--cor-texto-sobre-fundo-escuro, #ffffff); /* Cor de texto do seu site */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container-obrigado {
+      background-color: var(--cor-fundo-conteudo-claro, #4A1964); /* Cor de fundo para o container */
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+      max-width: 600px;
+      width: 90%;
+    }
+    h1 {
+      color: var(--cor-acento-suave, #E0B0FF); /* Cor de destaque */
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    /* Reutiliza a classe .btn e .btn-filled do seu style.css para o botão */
+  </style>
+</head>
+<body>
+  <div class="container-obrigado">
+    <h1>Chamado Enviado com Sucesso!</h1>
+    <p>Obrigado por abrir um chamado conosco. Nossa equipe analisará sua solicitação e entrará em contato o mais breve possível.</p>
+    <a href="index.html" class="btn btn-filled">Voltar à Página Inicial</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+<!--cabeçalho-->
+<header class="navbar">
+  <div class="navbar-content">
+    <div class="logo-text">
+      <span class="logo-support">Support</span><span class="logo-pro">Pro</span>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="#abrir-chamado">Abrir Chamado</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!--poscabeçalho-->
+<section class="hero js-scroll-trigger">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="js-hero-child-animate">
+        Soluções de TI para o seu <span class="highlight">sucesso</span>
+      </h1
+      <p class="js-hero-child-animate">
+        Oferecemos serviços completos de tecnologia da informação para empresas de todos os tamanhos, com foco em segurança, eficiência e inovação.
+      </p>
+      <div class="hero-buttons js-hero-child-animate">
+        <a href="#contato" class="btn btn-outline">Fale Conosco</a>
+        <a href="#servicos" class="btn btn-filled">Nossos Serviços</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="computador.png" alt="Ilustração de computador representando serviços de TI" class="js-hero-child-animate">
+    </div>
+  </div>
+</section>
+
+
+<!--serviços-->
+  <section id="servicos" class="js-scroll-trigger">
+  <div class="container-servicos">
+    <!-- Proteção Antivírus e EDR -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3>Proteção Antivírus e EDR</h3>
+      <p>Proteção completa para seus dispositivos com soluções de antivírus e EDR (Endpoint Detection and Response).</p>
+      <span class="destaque">A partir de R$ 49,90 por dispositivo</span>
+    </div>
+
+    <!-- Gestão de Servidores -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-server"></i></div>
+      <h3>Gestão de Servidores</h3>
+      <p>Monitoramento, manutenção e otimização de servidores para garantir o máximo desempenho.</p>
+      <span class="destaque">Infraestrutura sempre disponível</span>
+    </div>
+
+    <!-- Suporte TI 24/7 -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-headset"></i></div>
+      <h3>Suporte TI 24/7</h3>
+      <p>Suporte técnico disponível 24 horas por dia, 7 dias por semana, para resolver qualquer problema de TI.</p>
+      <span class="destaque">Atendimento rápido e eficiente</span>
+    </div>
+
+    <!-- Redes e Conectividade -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-network-wired"></i></div>
+      <h3>Redes e Conectividade</h3>
+      <p>Implementação e manutenção de redes corporativas seguras e de alto desempenho.</p>
+      <span class="destaque">Conexão estável e segura</span>
+    </div>
+
+    <!-- Manutenção de Nobreak -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+      <h3>Manutenção de Nobreak</h3>
+      <p>Serviços especializados de manutenção preventiva e corretiva para sistemas de nobreak.</p>
+      <span class="destaque">Garantia de energia ininterrupta</span>
+    </div>
+
+    <!-- Backup e Recuperação (ProBackup) -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <h3>Backup e Recuperação <span class="badge">ProBackup</span></h3>
+      <p>Nossa solução proprietária de backup automatizado e recuperação de desastres para seus dados críticos, com armazenamento seguro em nuvem.</p>
+      <span class="destaque">Seus dados sempre protegidos</span>
+    </div>
+
+    <!-- Firewall Gerenciado -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-fire-flame-curved"></i></div>
+      <h3>Firewall Gerenciado</h3>
+      <p>Proteção avançada de rede com firewall de última geração, monitorado e gerenciado 24/7 por nossa equipe.</p>
+      <span class="destaque">Segurança perimetral completa</span>
+    </div>
+
+    <!-- Inventário em Tempo Real -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-clipboard-list"></i></div>
+      <h3>Inventário em Tempo Real</h3>
+      <p>Acesso a um portal exclusivo com inventário completo e atualizado de todos os seus ativos de TI em tempo real.</p>
+      <span class="destaque">Controle total dos seus recursos</span>
+    </div>
+
+    <!-- Filtro DNS (ProDNS) -->
+    <div class="card-servico">
+      <div class="icone"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+      <h3>Filtro DNS <span class="badge">ProDNS</span></h3>
+      <p>Nossa solução proprietária de filtragem DNS que bloqueia ameaças na internet antes que cheguem à sua rede, protegendo contra malware, phishing e conteúdo inadequado.</p>
+      <span class="destaque">Navegação segura e produtiva</span>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <section class="simulador js-scroll-trigger" id="simulador">
+  <h2>Simulador de Preços</h2>
+  <p>Calcule o valor do nosso serviço com base na quantidade de dispositivos da sua empresa.</p>
+
+  <form id="form-simulador">
+    <label for="tipo-dispositivo">Tipo de Dispositivo:</label>
+    <select id="tipo-dispositivo">
+      <option>Todos (Notebooks, Desktops e Servidores)</option>
+      <option>Notebook</option>
+      <option>Desktop</option>
+      <option>Servidor</option>
+    </select>
+    <label for="quantidade">Quantidade de Dispositivos:</label>
+    <input type="number" id="quantidade" min="1" value="1">
+
+    <label for="tipo-protecao">Tipo de Proteção:</label>
+    <select id="tipo-protecao">
+      <option>Proteção Básica (Antivírus)</option>
+      <option>Proteção Intermediária (Antivírus + EDR)</option>
+      <option>Proteção Completa (Antivírus + EDR + ProDNS)</option>
+    </select>
+
+    <button type="button" onclick="calcularPreco()">Calcular Preço</button>
+  </form>
+
+  <div id="resultado-simulacao" class="resultado">
+    <!-- Resultado aparecerá aqui -->
+  </div>
+</section> 
+
+<section id="abrir-chamado" class="js-scroll-trigger">
+  <div class="container-chamado">
+    <h2>Abrir Chamado de Serviço</h2>
+    <p>
+      Precisa de ajuda? Preencha o formulário abaixo para criar uma nova solicitação de serviço.
+      Nossa equipe entrará em contato o mais breve possível.
+    </p>
+    <form id="form-chamado" action="/api/criar-chamado" method="POST" onsubmit="return validarFormularioChamado()">
+      <div class="form-group">
+        <label for="chamado-nome">Nome Completo:</label>
+        <input type="text" id="chamado-nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="chamado-email">E-mail:</label>
+        <input type="email" id="chamado-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="chamado-telefone">Telefone:</label>
+        <input type="tel" id="chamado-telefone" name="telefone" required>
+      </div>
+      <div class="form-group">
+        <label for="chamado-empresa">Empresa (Opcional):</label>
+        <input type="text" id="chamado-empresa" name="empresa">
+      </div>
+      <div class="form-group">
+        <label for="chamado-tipo-dispositivo">Tipo de Dispositivo/Serviço:</label>
+        <select id="chamado-tipo-dispositivo" name="tipo_dispositivo" required>
+          <option value="">Selecione...</option>
+          <option value="Notebook">Notebook</option>
+          <option value="Desktop">Desktop</option>
+          <option value="Servidor">Servidor</option>
+          <option value="Rede">Redes e Conectividade</option>
+          <option value="Seguranca">Segurança (Antivírus, Firewall, etc.)</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="chamado-descricao">Descrição do Problema:</label>
+        <textarea id="chamado-descricao" name="descricao" rows="5" required></textarea>
+      </div>
+      <div class="g-recaptcha" data-sitekey=6LfLil4rAAAAAAhfLjEHoFUsLwiFqtAM968dcwuG></div>
+      <button type="submit" class="btn btn-filled">Enviar Chamado</button>
+    </form>
+  </div>
+</section>
+
+<section id="contato" class="contato-section js-scroll-trigger">
+    <h2>Entre em Contato</h2>
+    <p>Escolha sua forma preferida de falar com a gente. Estamos ansiosos para ajudar!</p>
+    
+    <div class="contato-opcoes-container">
+        <a href="https://wa.me/5592981280033" target="_blank" class="contato-opcao whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span>Converse pelo WhatsApp</span>
+            <small>(92) 98128-0033</small>
+        </a>
+        <a href="https://www.instagram.com/supportprotecnologia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contato-opcao instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Siga-nos no Instagram</span>
+            <small>@supportprotecnologia</small>
+          </a>
+    </div>
+  </section>  
+
+  <footer class="js-scroll-trigger">
+    <p>&copy; 2025 Support Pro. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Seu script calcularPreco existente
+    function calcularPreco() {
+      const tipoProtecao = document.getElementById("tipo-protecao").value;
+      const quantidade = parseInt(document.getElementById("quantidade").value) || 1;
+      let precoPorDispositivo = 0;
+
+      if (tipoProtecao.includes("Básica")) {
+        precoPorDispositivo = 39.90;
+      } else if (tipoProtecao.includes("Intermediária")) {
+        precoPorDispositivo = 59.90;
+      } else { // Completa
+        precoPorDispositivo = 89.90;
+      }
+
+      const total = (precoPorDispositivo * quantidade).toFixed(2);
+      document.getElementById("resultado-simulacao").innerHTML = `
+        <h3>Resultado da Simulação</h3>
+        <p><strong>Dispositivos:</strong> ${quantidade}</p>
+        <p><strong>Tipo de Proteção:</strong> ${tipoProtecao}</p>
+        <p><strong>Valor por dispositivo:</strong> R$ ${precoPorDispositivo.toFixed(2)}</p>
+        <p><strong>Total:</strong> R$ ${total}</p>
+      `;
+    }
+  </script>
+  <script>
+    // Script de validação para o formulário de contato (se houver um)
+    function validarFormularioContatoGeral() { // Renomeado para evitar conflito, caso você adicione um formulário de contato geral
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
+
+      // Se este formulário também precisar de reCAPTCHA, adicione a validação aqui.
+      if (!nome || nome.length < 3) {
+        alert("Digite seu nome corretamente.");
+        return false;
+      }
+
+      if (!email || !email.includes("@")) {
+        alert("Digite um e-mail válido.");
+        return false;
+      }
+
+      if (!mensagem || mensagem.length < 10) {
+        alert("Por favor, escreva uma mensagem com mais detalhes.");
+        return false;
+      }
+
+      return true;
+    }
+
+    // Script de validação para o formulário de abertura de chamado
+    function validarFormularioChamado() {
+      const nome = document.getElementById("chamado-nome").value.trim();
+      const email = document.getElementById("chamado-email").value.trim();
+      const telefone = document.getElementById("chamado-telefone").value.trim();
+      const tipoDispositivo = document.getElementById("chamado-tipo-dispositivo").value;
+      const descricao = document.getElementById("chamado-descricao").value.trim();
+      const captcha = grecaptcha.getResponse();
+
+      if (!nome || nome.length < 3) {
+        alert("Por favor, digite seu nome completo.");
+        return false;
+      }
+
+      if (!email || !email.includes("@")) {
+        alert("Por favor, digite um e-mail válido.");
+        return false;
+      }
+
+      if (!telefone || telefone.length < 8) { // Validação simples de telefone
+        alert("Por favor, digite um telefone válido.");
+        return false;
+      }
+
+      if (!tipoDispositivo) {
+        alert("Por favor, selecione o tipo de dispositivo ou serviço.");
+        return false;
+      }
+
+      if (!descricao || descricao.length < 10) {
+        alert("Por favor, descreva o problema com mais detalhes (mínimo 10 caracteres).");
+        return false;
+      }
+
+      if (captcha.length === 0) {
+        alert("Por favor, confirme que você não é um robô (reCAPTCHA).");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+  <!-- Inclusão do script de animação -->
+  <script src="script.js"></script>
+</body>
+</html>
