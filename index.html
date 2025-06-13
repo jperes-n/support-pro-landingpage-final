@@ -6,6 +6,7 @@
   <title>Support Pro</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="logo principal fundo branco.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -13,11 +14,14 @@
 <!--cabeçalho-->
 <header class="navbar">
   <div class="navbar-content">
-    <div class="logo-text">
-      <span class="logo-support">Support</span><span class="logo-pro">Pro</span>
+    <div class="navbar-placeholder-logo">
+      <!-- Espaço reservado ou pode ser removido se a navbar precisar de reajuste de alinhamento sem logo -->
     </div>
-    <nav>
-      <ul class="nav-menu">
+    <button class="navbar-toggler" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="nav-menu-container">
+      <ul class="nav-menu" id="navMenu">
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#simulador">Simulador</a></li>
@@ -31,10 +35,16 @@
 <!--poscabeçalho-->
 <section class="hero js-scroll-trigger">
   <div class="hero-content">
+    <div class="hero-main-logo-container js-hero-child-animate">
+      <img src="logo principal fundo transparente.png" alt="Support Pro Logo Principal" class="hero-main-logo-img">
+      <div class="hero-main-logo-text">
+        <span class="hero-main-logo-support">Support</span><span class="hero-main-logo-pro">Pro</span>
+      </div>
+    </div>
     <div class="hero-text">
       <h1 class="js-hero-child-animate">
         Soluções de TI para o seu <span class="highlight">sucesso</span>
-      </h1
+      </h1>
       <p class="js-hero-child-animate">
         Oferecemos serviços completos de tecnologia da informação para empresas de todos os tamanhos, com foco em segurança, eficiência e inovação.
       </p>
@@ -200,7 +210,7 @@
         <label for="chamado-descricao">Descrição do Problema:</label>
         <textarea id="chamado-descricao" name="descricao" rows="5" required></textarea>
       </div>
-      <div class="g-recaptcha" data-sitekey=6LfLil4rAAAAAAhfLjEHoFUsLwiFqtAM968dcwuG></div>
+      <div class="g-recaptcha" data-sitekey="6LfLil4rAAAAAAhfLjEHoFUsLwiFqtAM968dcwuG"></div>
       <button type="submit" class="btn btn-filled">Enviar Chamado</button>
     </form>
   </div>

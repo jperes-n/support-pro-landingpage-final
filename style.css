@@ -1,21 +1,22 @@
-
 :root {
   /* Nova Paleta de Cores */
   --cor-fundo-principal-escuro: #2A0B47; /* Roxo bem escuro e profundo */
   --cor-fundo-secundario-escuro: #4A1964; /* Roxo/magenta escuro para navbar, etc. */
   --cor-acento-vibrante: #928e92; /* Magenta vibrante para CTAs e ícones */
-  --cor-acento-suave: #ffffff; /* Rosa/roxo mais claro para destaques e hovers */
+  --cor-acento-suave: #ffffff; /* Branco para destaques e hovers */
 
   --cor-texto-sobre-fundo-escuro: #ffffff; /* Off-white para texto em fundos escuros */
-  --cor-texto-sobre-fundo-claro: #ffffff; /* Roxo escuro para texto em fundos claros */
+  /* --cor-texto-sobre-fundo-claro: #ffffff; /* COMENTÁRIO: Esta variável era #ffffff (branco) e usada de forma idêntica a --cor-texto-sobre-fundo-escuro. Consolidada para clareza. */
 
-  --cor-fundo-conteudo-claro: #4A1964; /* Branco para seções de conteúdo */
-  --cor-fundo-conteudo-sutil: #F9F7FB; /* Alternativa: Cinza muito claro para variar fundos de seção */
+  --cor-fundo-conteudo-claro: #4A1964; /* Usado para cards e simulador, fundo escuro */
+  --cor-fundo-conteudo-sutil: #F9F7FB; /* Cinza muito claro para seções claras como "Abrir Chamado" */
 
   --cor-fundo-geral-escuro: #1A072E; /* Roxo bem escuro para o fundo do body */
   --cor-fundo-secao-intermediaria-escura: #240F3D; /* Roxo escuro para fundos de seção */
 
   --cor-fundo-footer: #333333; /* Cinza escuro para o footer */
+  --cor-texto-titulo-secao-clara: var(--cor-fundo-principal-escuro); /* Roxo escuro para títulos em seções claras, derivado do fundo principal */
+  --cor-logo-support-roxo: #c561ff; /* Roxo mais claro e vibrante para "Support" no logo da navbar */
   --cor-badge-fundo: var(--cor-fundo-secundario-escuro);
   --cor-badge-texto: var(--cor-texto-sobre-fundo-escuro);
 }
@@ -66,20 +67,17 @@
 .contato-opcao i {
   font-size: 3rem; /* Ícone maior */
   margin-bottom: 15px;
-  display: block; /* Garante que o ícone seja tratado como um bloco */
 }
 
 .contato-opcao span {
   font-size: 1.3em;
   font-weight: 600;
   margin-bottom: 5px;
-  display: block; /* Garante que o texto principal seja um bloco */
 }
 
 .contato-opcao small {
   font-size: 0.9em;
   opacity: 0.8;
-  display: block; /* Garante que o detalhe seja um bloco */
 }
 
 /* Cores específicas para cada botão */
@@ -100,8 +98,9 @@
 }
 
 html, body {
-  overflow-x: hidden;
+  /* overflow-x: hidden;  Movido para o body apenas para evitar conflitos com sticky navbar */
   max-width: 100vw;
+  scroll-behavior: smooth; /* Rolagem suave para links internos */
 }
 
 img {
@@ -112,52 +111,37 @@ img {
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: var(--cor-fundo-geral-escuro); /* Novo fundo escuro para o body */
-  color: var(--cor-texto-sobre-fundo-escuro);      /* Texto padrão claro */
+  background-color: var(--cor-fundo-geral-escuro);
+  color: var(--cor-texto-sobre-fundo-escuro);
   line-height: 1.8;
   letter-spacing: 0.3px;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Garante que não haja scroll horizontal */
 }
 
-.logo {
-  max-height: 150px;
-  margin-bottom: 1rem;
-}
+/* Removido .logo e nav ul genéricos, pois a navbar tem estilos específicos */
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-nav a {
+nav a { /* Estilo base para links de navegação, se usado fora do .nav-menu */
   color: var(--cor-texto-sobre-fundo-escuro);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: var(--cor-acento-suave);
+nav a:hover, .nav-menu li a:hover, .nav-menu li a:focus {
+  color: var(--cor-acento-suave); /* Cor de hover padrão */
 }
 
 /* Seção Hero com layout elegante e responsivo */
 .hero {
   background: linear-gradient(90deg, var(--cor-fundo-principal-escuro), var(--cor-fundo-secundario-escuro));
   color: var(--cor-texto-sobre-fundo-escuro);
-  /* Padding vertical aumentado para mais destaque, padding lateral alinhado com navbar */
-  padding: 100px 2rem; /* Espaçamento INTERNO para o .hero-content */
-
-  /* Anula as restrições da regra 'section' genérica para permitir fundo de largura total */
-  width: 100%;       /* Garante que a seção hero tente ocupar toda a largura disponível */
-  max-width: none;   /* Remove o limite de largura máxima para o fundo da hero */
-  margin-left: 0;    /* Remove a centralização automática da seção hero em si */
-  margin-right: 0;   /* Remove a centralização automática da seção hero em si */
-  position: relative; /* Para o pseudo-elemento da divisória */
-  overflow: hidden;   /* Para conter a divisória angulada */
+  padding: 100px 2rem;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content {
@@ -167,14 +151,48 @@ nav a:hover {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative; /* Garante que o conteúdo do hero fique acima da divisória */
+  position: relative;
   z-index: 2;
+}
+
+/* Novo container do logo na seção Hero */
+.hero-main-logo-container {
+  width: 100%; /* Ocupa toda a largura para centralizar o conteúdo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem; /* Espaço abaixo do logo, antes do título h1 */
+  /* A animação de entrada é controlada por .js-hero-child-animate e .animate-now */
+}
+
+.hero-main-logo-img {
+  max-width: 200px; /* Aumentando mais o tamanho da imagem do logo na Hero */
+  margin-bottom: 10px;
+  /* Efeito de brilho futurista */
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 18px var(--cor-logo-support-roxo, #c561ff));
+  animation: subtlePulse 2.5s infinite ease-in-out; /* Animação um pouco mais rápida */
+}
+
+.hero-main-logo-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.8rem; /* Aumentando mais o tamanho do texto do logo na Hero */
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  /* Efeito de brilho no texto */
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.2), 0 0 8px rgba(197, 97, 255, 0.4); /* Brilho do texto um pouco mais sutil */
+}
+.hero-main-logo-support {
+  color: var(--cor-logo-support-roxo);
+}
+.hero-main-logo-pro {
+  color: var(--cor-texto-sobre-fundo-escuro);
 }
 
 .hero-text {
   flex: 1;
   min-width: 300px;
-  flex-basis: 55%; /* Dando um pouco mais de espaço para o texto */
+  flex-basis: 55%;
 }
 
 .hero-text h1 {
@@ -193,7 +211,7 @@ nav a:hover {
 .hero-text p {
   font-size: 1.1rem;
   margin-bottom: 30px;
-  color: var(--cor-texto-sobre-fundo-escuro); /* Ajustado para a nova variável */
+  color: var(--cor-texto-sobre-fundo-escuro);
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -208,7 +226,12 @@ nav a:hover {
   padding: 12px 24px;
   border-radius: 5px;
   font-weight: bold;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .btn-outline {
@@ -218,23 +241,23 @@ nav a:hover {
 
 .btn-outline:hover {
   background-color: var(--cor-acento-suave);
-  color: var(--cor-fundo-principal-escuro); /* Contraste com o fundo do botão */
+  color: var(--cor-fundo-principal-escuro);
 }
 
 .btn-filled {
   background-color: var(--cor-acento-suave);
-  color: var(--cor-fundo-principal-escuro); /* Contraste com o fundo do botão */
+  color: var(--cor-fundo-principal-escuro);
 }
 
 .btn-filled:hover {
-  background-color: var(--cor-acento-vibrante); /* Usar o acento mais forte no hover */
+  background-color: var(--cor-acento-vibrante);
 }
 
 .hero-image {
   flex: 1;
   text-align: center;
   min-width: 300px;
-  flex-basis: 40%; /* Ajustando a base da imagem */
+  flex-basis: 40%;
 }
 
 .hero-image img {
@@ -243,46 +266,58 @@ nav a:hover {
   height: auto;
 }
 
-/* Divisória angulada para o final da seção Hero */
 .hero::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px; /* Altura da inclinação */
-  background-color: var(--cor-fundo-secao-intermediaria-escura); /* Cor da próxima seção */
-  clip-path: polygon(0 100%, 100% 0, 100% 100%); /* Angulo para cima à direita */
+  height: 100px;
+  background-color: var(--cor-fundo-secao-intermediaria-escura);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
   z-index: 1;
 }
 
 /* SECTION */
 section {
   padding: 3rem 1.5rem;
-  /* max-width e margin:auto serão aplicados aos containers internos das seções */
-  position: relative; /* Para pseudo-elementos de divisórias */
-  overflow: hidden;   /* Para conter divisórias anguladas */
+  position: relative;
+  overflow: hidden;
 }
 
 section h2 {
-  color: var(--cor-texto-sobre-fundo-escuro); /* Títulos das seções agora claros */
+  color: var(--cor-texto-sobre-fundo-escuro);
   font-size: 2rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  section {
+    padding: 2.5rem 1rem; /* Ajuste de padding para seções em telas menores */
+  }
+  .hero-text h1 {
+    font-size: 2.2rem; /* Reduz o tamanho do título principal em mobile */
+  }
+  .hero-text p {
+    font-size: 1rem; /* Reduz o tamanho do parágrafo em mobile */
+  }
+  section h2 {
+    font-size: 1.8rem; /* Reduz o tamanho dos títulos de seção em mobile */
+  }
+}
+
 /* Container geral dos serviços */
 #servicos {
   padding: 60px 20px;
-  background-color: var(--cor-fundo-secao-intermediaria-escura); /* Novo fundo escuro para seção de serviços */
+  background-color: var(--cor-fundo-secao-intermediaria-escura);
   text-align: center;
-  /* Anula as restrições da regra 'section' genérica para permitir fundo de largura total */
   width: 100%;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  margin-top: -1px; /* Pequeno ajuste para sobrepor corretamente a divisória do hero */
-  padding-top: 120px; /* Aumenta o padding superior para compensar a divisória angulada */
+  margin-top: -1px;
+  padding-top: 120px;
 }
 
 .container-servicos {
@@ -291,46 +326,44 @@ section h2 {
   gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative; /* Para garantir que os cards fiquem acima de qualquer pseudo-elemento da seção */
+  position: relative;
   z-index: 2;
 }
 
-/* Estilo dos cards */
 .card-servico {
-  background: var(--cor-fundo-conteudo-claro); /* Cards em branco para destaque */
+  background: var(--cor-fundo-conteudo-claro);
   border-radius: 12px;
   padding: 30px 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; /* Adicionada opacity à transição */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
   text-align: left;
-  z-index: 1; /* Adicionado para controle de empilhamento */
-  position: relative; /* Necessário para o ::before da borda animada funcionar corretamente com z-index */
-  /* position: relative; já está implícito ou não é estritamente necessário para este ::before específico,
-     mas é bom ter em mente para posicionamento absoluto de pseudo-elementos.
-     Neste caso, top/left/right/bottom 0 cobrem o padding box. */
+  z-index: 1;
+  position: relative;
+  opacity: 0; /* Para animação de entrada */
+  transform: translateY(20px); /* Para animação de entrada */
+  animation: fadeInUp 0.6s ease-out forwards; /* Aplica a animação */
 }
 
 .card-servico::before {
   content: "";
   position: absolute;
-  top: -1px; left: -1px; right: -1px; bottom: -1px; /* Ajuste para a borda não cortar com borda de 4px */
-  border: 4px solid transparent; /* Começa transparente */
-  border-radius: inherit; /* Herda o border-radius do card */
-  pointer-events: none; /* Não interfere com eventos do mouse no card */
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  border: 4px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
-/* Efeito para cards não selecionados quando o mouse está sobre o container de serviços */
 .container-servicos:hover .card-servico:not(:hover) {
-  transform: scale(0.95); /* Um pouco menor para mais destaque ao card focado */
-  opacity: 0.6;           /* Um pouco mais opaco */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04); /* Sombra ainda mais sutil */
+  transform: scale(0.95);
+  opacity: 0.6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .card-servico:hover {
-  transform: translateY(-12px) scale(1.08); /* Efeito de levantar mais e zoom maior */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra mais dramática */
-  opacity: 1; /* Garante opacidade total */
-  z-index: 10; /* Traz o card para frente */
+  transform: translateY(-12px) scale(1.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  z-index: 10;
 }
 
 .card-servico:hover::before {
@@ -338,68 +371,56 @@ section h2 {
 }
 
 @keyframes drawBorder {
-  0% {
-    border-color: transparent;
-  }
-  25% { /* Desenha borda superior */
-    border-top-color: var(--cor-acento-vibrante);
-    border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent;
-  }
-  50% { /* Desenha borda superior e direita */
-    border-top-color: var(--cor-acento-vibrante); border-right-color: var(--cor-acento-vibrante);
-    border-bottom-color: transparent; border-left-color: transparent;
-  }
-  75% { /* Desenha borda superior, direita e inferior */
-    border-top-color: var(--cor-acento-vibrante); border-right-color: var(--cor-acento-vibrante);
-    border-bottom-color: var(--cor-acento-vibrante); border-left-color: transparent;
-  }
-  100% { /* Todas as bordas desenhadas */
-    border-color: var(--cor-acento-vibrante);
-  }
+  0% { border-color: transparent; }
+  25% { border-top-color: var(--cor-acento-vibrante); border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; }
+  50% { border-top-color: var(--cor-acento-vibrante); border-right-color: var(--cor-acento-vibrante); border-bottom-color: transparent; border-left-color: transparent; }
+  75% { border-top-color: var(--cor-acento-vibrante); border-right-color: var(--cor-acento-vibrante); border-bottom-color: var(--cor-acento-vibrante); border-left-color: transparent; }
+  100% { border-color: var(--cor-acento-vibrante); }
 }
 
-/* Divisória angulada para o final da seção Serviços */
 #servicos::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100px; /* Altura da inclinação */
-  background-color: var(--cor-fundo-geral-escuro); /* Cor do fundo do body (onde o simulador está) */
-  clip-path: polygon(0 0, 100% 100%, 0 100%); /* Angulo para baixo à esquerda */
+  height: 100px;
+  background-color: var(--cor-fundo-geral-escuro);
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
   z-index: 1;
 }
 
-/* Ícones */
 .card-servico .icone {
   font-size: 30px;
   color: var(--cor-acento-vibrante);
   margin-bottom: 20px;
 }
+.card-servico .icone i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.card-servico:hover .icone i {
+  transform: scale(1.2) rotate(10deg);
+  color: var(--cor-acento-suave);
+}
 
-/* Título do serviço */
 .card-servico h3 {
   font-size: 1.2rem;
-  color: var(--cor-texto-sobre-fundo-claro);
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 10px;
 }
 
-/* Descrição do serviço */
 .card-servico p {
   font-size: 0.95rem;
-  color: var(--cor-texto-sobre-fundo-claro); /* Ajustar se necessário para melhor leitura */
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 15px;
 }
 
-/* Destaque (linha de baixo em rosa) */
 .card-servico .destaque {
   color: var(--cor-acento-vibrante);
   font-weight: 600;
   font-size: 0.9rem;
 }
 
-/* Badge (ProBackup / ProDNS) */
 .badge {
   background-color: var(--cor-badge-fundo);
   color: var(--cor-badge-texto);
@@ -411,34 +432,33 @@ section h2 {
   vertical-align: middle;
 }
 
-/* Responsividade extra para telas pequenas */
 @media (max-width: 480px) {
   .card-servico {
     padding: 25px 15px;
+  }
+  .container-servicos {
+    gap: 20px; /* Reduz o gap entre cards em telas muito pequenas */
   }
 }
 
 /* SIMULADOR */
 .simulador {
-  /* Herda position:relative e overflow:hidden da regra 'section' se for uma <section> */
-  /* Se não for uma <section> mas ainda precisar de contexto de empilhamento: */
-  /* position: relative; */
   max-width: 600px;
-  margin: 0 auto; /* Centraliza o bloco do simulador */
-  padding: 2.5rem; /* Aumentar um pouco o padding para mais respiro */
-  background: var(--cor-fundo-conteudo-claro);
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: var(--cor-fundo-conteudo-claro); /* Fundo escuro para o simulador */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: left;
-  margin-top: 100px; /* Espaço para a divisória da seção de serviços */
-  margin-bottom: 50px; /* Espaço antes da próxima seção */
-  position: relative; /* Para garantir que fique acima do fundo geral e controle z-index */
+  margin-top: 100px;
+  margin-bottom: 50px;
+  position: relative;
   z-index: 2;
 }
 
 .simulador h2 {
   text-align: center;
-  color: var(--cor-texto-sobre-fundo-claro); /* Mantém escuro pois o fundo do simulador é claro */
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 1rem;
 }
 
@@ -446,6 +466,7 @@ section h2 {
   display: block;
   margin: 1rem 0 0.3rem;
   font-weight: 600;
+  color: var(--cor-texto-sobre-fundo-escuro); /* Labels claros */
 }
 
 .simulador select,
@@ -453,9 +474,16 @@ section h2 {
   width: 100%;
   padding: 0.6rem;
   font-size: 1rem;
-  border: 1px solid #adadad;
+  border: 1px solid #adadad; /* Manter borda clara para contraste no fundo escuro */
   border-radius: 5px;
+  background-color: var(--cor-fundo-geral-escuro); /* Fundo dos inputs escuro */
+  color: var(--cor-texto-sobre-fundo-escuro); /* Texto dos inputs claro */
 }
+.simulador select option { /* Estilo para as opções do select */
+    background-color: var(--cor-fundo-secundario-escuro);
+    color: var(--cor-texto-sobre-fundo-escuro);
+}
+
 
 .simulador button {
   margin-top: 1.5rem;
@@ -467,42 +495,41 @@ section h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .simulador button:hover {
-  background: var(--cor-fundo-secundario-escuro); /* Hover mais escuro */
+  background: var(--cor-fundo-principal-escuro); /* Hover mais escuro e roxo */
 }
 
 .resultado {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #000000;
+  border-top: 1px solid var(--cor-texto-sobre-fundo-escuro); /* Linha divisória clara */
   font-size: 1rem;
+  color: var(--cor-texto-sobre-fundo-escuro); /* Texto do resultado claro */
+}
+.resultado h3 {
+    color: var(--cor-acento-suave); /* Destaque para o título do resultado */
+}
+
+@media (max-width: 768px) {
+  .simulador {
+    padding: 2rem 1.5rem;
+    margin-top: 60px;
+  }
 }
 
 /* ANIMAÇÕES GERAIS */
-/* Estado inicial para elementos da Hero que serão animados via JS */
 .hero-text h1.js-hero-child-animate,
 .hero-text p.js-hero-child-animate,
-div.hero-buttons.js-hero-child-animate, /* Target the div container */
+div.hero-buttons.js-hero-child-animate,
 .hero-image img.js-hero-child-animate {
   opacity: 0;
-  visibility: hidden; /* Começam escondidos */
-  /* transform: translateY(30px); é aplicado pelo keyframe da animação */
+  visibility: hidden;
 }
 
-/* Remove animação direta que existia antes para elementos da hero */
-/*
-.hero-text h1,
-.hero-text p,
-.hero-buttons,
-.hero-image img {
-  animation: fadeInSlideUp 0.8s ease-out forwards;
-}
-*/
-
-/* Delays para os elementos da Hero quando a classe .animate-now for adicionada */
-.hero-text h1.js-hero-child-animate.animate-now { animation-delay: 0s; } /* Adicionado para consistência */
+.hero-text h1.js-hero-child-animate.animate-now { animation-delay: 0s; }
 .hero-text p.js-hero-child-animate.animate-now { animation-delay: 0.2s; }
 div.hero-buttons.js-hero-child-animate.animate-now { animation-delay: 0.4s; }
 .hero-image img.js-hero-child-animate.animate-now { animation-delay: 0.3s; }
@@ -510,12 +537,6 @@ div.hero-buttons.js-hero-child-animate.animate-now { animation-delay: 0.4s; }
 @keyframes fadeInSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(30px); /* Aumentar um pouco o deslocamento inicial */
-    visibility: visible; /* Torna visível no início da animação */
-  }
-  /* Adicionado um keyframe intermediário para garantir que a visibilidade seja aplicada */
-  1% {
-    opacity: 0; /* Mantém opacidade 0 no início */
     transform: translateY(30px);
     visibility: visible;
   }
@@ -526,17 +547,7 @@ div.hero-buttons.js-hero-child-animate.animate-now { animation-delay: 0.4s; }
   }
 }
 
-/* Animação de entrada para os cards de serviço */
-.card-servico {
-  /* ... seus estilos existentes ... */
-  /* background, border-radius, padding, box-shadow, transition, text-align já estão definidos acima */
-  /* Adicionando apenas as propriedades de animação */
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Adicionar delays para um efeito escalonado (opcional, mas legal) */
+/* Delays para animação escalonada dos cards de serviço */
 #servicos .container-servicos .card-servico:nth-child(1) { animation-delay: 0.1s; }
 #servicos .container-servicos .card-servico:nth-child(2) { animation-delay: 0.2s; }
 #servicos .container-servicos .card-servico:nth-child(3) { animation-delay: 0.3s; }
@@ -555,97 +566,55 @@ div.hero-buttons.js-hero-child-animate.animate-now { animation-delay: 0.4s; }
 }
 
 /* Animação para seções principais ao rolar */
-#servicos,
+#servicos, /* A animação dos cards já é individual, esta é para a seção como um todo se necessário */
 .simulador,
 .contato-section,
-footer {
-  opacity: 0; /* Estado inicial antes da animação */
-  visibility: hidden; /* Esconde completamente antes da animação, será tornado visível pela animação */
-  /* A animação será aplicada via JavaScript adicionando uma classe */
+footer,
+.hero /* Adicionado para animar a seção hero como um todo ao entrar */
+{
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* Classe a ser adicionada pelo JavaScript para iniciar a animação */
 .animate-now {
   animation: fadeInSlideUp 0.8s ease-out forwards;
 }
 
-
-/* 
-  As animações para #servicos, .simulador, .contato-section, e footer
-  devem iniciar quando o navegador renderiza o elemento ao entrar na viewport.
-  Os delays específicos para estas seções foram removidos para melhorar o acionamento pelo scroll.
-  Delays internos (como nos cards de serviço) podem ser mantidos para efeitos escalonados dentro da seção.
-*/
-
-
-/* Animação para ícones nos cards de serviço */
-.card-servico .icone i {
-  transition: transform 0.3s ease, color 0.3s ease; /* Adiciona transição para cor */
-}
-
-.card-servico:hover .icone i {
-  transform: scale(1.2) rotate(10deg); /* Aumenta e gira um pouco */
-  color: var(--cor-acento-suave); /* Usar o acento suave no hover do ícone */
-}
-
-/* Animação para botões */
-.btn {
-  /* text-decoration, padding, border-radius, font-weight já estão definidos */
-  /* Apenas ajustando/adicionando transições */
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px); /* Leve elevação */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Sombra mais pronunciada */
-}
-
-/* .btn-outline:hover e .btn-filled:hover já estão definidos e corretos */
-
-/* Animação para links de navegação */
-.nav-menu li a {
-  /* color, text-decoration, font-weight, font-size já estão definidos */
-  /* Apenas ajustando/adicionando transições */
-  transition: color 0.3s ease, transform 0.2s ease;
-  display: inline-block; /* Necessário para transform funcionar corretamente */
-}
-
-.nav-menu li a:hover {
-  color: var(--cor-acento-suave);
-  transform: translateY(-2px); /* Leve deslocamento para cima */
-}
-
-/* Animação para o logo */
-.logo-text {
-  /* font-family, font-size, font-weight já estão definidos */
-  /* Apenas adicionando transição */
-  transition: transform 0.3s ease;
-}
-
-.logo-text:hover {
-  transform: scale(1.05); /* Aumenta levemente o logo */
+@keyframes subtlePulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 18px var(--cor-logo-support-roxo, #c561ff));
+  }
+  50% {
+    transform: scale(1.06); /* Aumentando um pouco a escala da pulsação */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.55)) drop-shadow(0 0 22px var(--cor-logo-support-roxo, #c561ff)); /* Ajustando o brilho na pulsação */
+  }
 }
 
 /* Acessibilidade: Reduzir movimento */
 @media (prefers-reduced-motion: reduce) {
-  .hero-text h1.js-hero-child-animate, /* Corrigido */
-  .hero-text p.js-hero-child-animate,  /* Corrigido */
-  div.hero-buttons.js-hero-child-animate, /* Corrigido */
-  .hero-image img.js-hero-child-animate, /* Corrigido */
+  .hero-text h1.js-hero-child-animate,
+  .hero-text p.js-hero-child-animate,
+  div.hero-buttons.js-hero-child-animate,
+  .hero-image img.js-hero-child-animate,
   .card-servico,
-  #servicos, /* Adicionado */
-  .simulador, /* Adicionado */
-  .contato-section, /* Adicionado */
-  footer { /* Adicionado */
+  #servicos,
+  .simulador,
+  .contato-section,
+  footer,
+  .hero {
     animation: none !important;
     opacity: 1;
     transform: translateY(0);
-    visibility: visible !important; /* Garante que fiquem visíveis */
+    visibility: visible !important;
   }
 
   .btn:hover,
   .nav-menu li a:hover,
-  .logo-text:hover {
+  .nav-menu li a:focus,
+  /* .navbar-logo:hover,  Removido pois o logo não está mais na navbar */
+  .hero-main-logo-img { /* Para parar completamente a animação de pulso */
+    animation: none !important;
     transform: none !important;
   }
    .card-servico:hover .icone i {
@@ -664,7 +633,7 @@ footer {
 /* NAVBAR */
 .navbar {
   background-color: var(--cor-fundo-secundario-escuro);
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem; /* Padding vertical um pouco menor */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -679,81 +648,154 @@ footer {
   margin: auto;
 }
 
-.logo-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 2rem;
-  font-weight: 900;
+/* Placeholder para o logo na navbar para manter o alinhamento dos itens do menu, se necessário.
+   Se o menu deve ir para a esquerda, este placeholder pode ser removido e o justify-content da navbar-content ajustado. */
+.navbar-placeholder-logo {
+  /* Se você quiser que o menu fique à esquerda, remova este placeholder
+     e ajuste .navbar-content para justify-content: flex-end; ou space-between se houver outro item à esquerda.
+     Por enquanto, deixaremos um espaço para manter o menu centralizado/à direita. */
+  min-width: 150px; /* Ajuste esta largura baseada no tamanho anterior do logo + texto */
 }
 
-.support-white {
-  color: white;
-}
-
-.pro-purple {
-  color: var(--cor-acento-suave); /* Logo "Pro" com cor de acento */
+.nav-menu-container {
+  /* Estilos para desktop são controlados por .nav-menu diretamente */
 }
 
 .nav-menu {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 0.8rem; /* Aumentando um pouco o gap entre os itens do menu */
   margin: 0;
+  padding: 0;
 }
 
 .nav-menu li a {
   color: var(--cor-texto-sobre-fundo-escuro);
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-size: 0.95rem; /* Aumentando um pouco o tamanho da fonte dos links do menu */
+  padding: 0.6rem 0.9rem; /* Padding para melhor área de clique */
+  border-radius: 4px;
+  transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+  display: inline-block;
 }
 
-.nav-menu li a:hover { /* Seletor corrigido de .nav para .nav-menu */
-  color: var(--cor-acento-suave);
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+  color: var(--cor-fundo-principal-escuro); /* Texto mais escuro no hover para contraste */
+  transform: translateY(-2px);
+  background-color: var(--cor-acento-suave); /* Fundo branco no hover */
 }
+
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cor-texto-sobre-fundo-escuro);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Media Query para responsividade da Navbar */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.8rem 1rem; /* Menor padding lateral na navbar em mobile */
+  }
+  .nav-menu-container {
+    display: none;
+    position: absolute;
+    top: 100%; /* Posiciona abaixo da altura da navbar */
+    left: 0;
+    width: 100%;
+    background-color: var(--cor-fundo-secundario-escuro);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    z-index: 999;
+    border-top: 1px solid rgba(255,255,255,0.1); /* Linha sutil de separação */
+  }
+
+  .nav-menu-container.active {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: stretch; /* Itens ocupam toda a largura */
+    gap: 0;
+    padding: 0.5rem 0; /* Padding vertical no menu mobile */
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: left; /* Alinha texto à esquerda */
+  }
+
+  .nav-menu li a {
+    display: block;
+    padding: 0.9rem 1.5rem; /* Padding maior para toque */
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 1rem; /* Fonte um pouco maior no mobile para links */
+  }
+  .nav-menu li:last-child a {
+    border-bottom: none;
+  }
+  .nav-menu li a:hover,
+  .nav-menu li a:focus {
+    background-color: var(--cor-fundo-principal-escuro); /* Fundo roxo mais escuro no hover/focus mobile */
+    color: var(--cor-acento-suave); /* Texto branco */
+    transform: none; /* Remove o translateY no mobile */
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+  .navbar-placeholder-logo {
+    min-width: 0; /* Em mobile, o placeholder não é tão crítico para o layout do menu hamburger */
+    flex-grow: 1; /* Permite que o botão hamburger seja empurrado para a direita */
+  }
+}
+
 
 /* CONTATO */
 .contato-section {
   padding: 60px 20px;
   text-align: center;
-  background: var(--cor-fundo-secao-intermediaria-escura); /* Novo fundo escuro para seção de contato */
-  /* Anula as restrições da regra 'section' genérica para permitir fundo de largura total */
+  background: var(--cor-fundo-secao-intermediaria-escura);
   width: 100%;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  margin-top: -1px; /* Ajuste para sobrepor corretamente */
-  padding-top: 120px; /* Aumenta o padding superior para compensar a divisória angulada */
+  margin-top: -1px;
+  padding-top: 120px;
 }
 
 .contato-section h2 {
   font-size: 2.2em;
-  color: var(--cor-texto-sobre-fundo-escuro); /* Título claro */
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 10px;
 }
 
 .contato-section p {
-  color: var(--cor-texto-sobre-fundo-escuro); /* Parágrafo claro */
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 40px;
 }
 
-
 .info-contato,
-.form-contato {
-  background: var(--cor-fundo-conteudo-claro);
+.form-contato { /* Estilos para um possível formulário de contato geral */
+  background: var(--cor-fundo-conteudo-claro); /* Fundo escuro para os cards de contato */
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   max-width: 400px;
   flex: 1;
   min-width: 300px;
-  position: relative; /* Para garantir z-index sobre a divisória da seção */
+  position: relative;
   z-index: 2;
 }
 
 .info-contato h3,
 .form-contato h3 {
-  color: var(--cor-texto-sobre-fundo-claro); /* Mantém escuro pois o fundo dos cards de contato é claro */
+  color: var(--cor-texto-sobre-fundo-escuro);
   margin-bottom: 20px;
 }
 
@@ -766,7 +808,7 @@ footer {
 .info-contato li {
   margin-bottom: 15px;
   font-size: 1em;
-  color: var(--cor-texto-sobre-fundo-claro); /* Mantém escuro pois o fundo do card de info é claro */
+  color: var(--cor-texto-sobre-fundo-escuro);
 }
 
 .info-contato i {
@@ -781,6 +823,8 @@ footer {
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: var(--cor-fundo-geral-escuro); /* Fundo dos inputs escuro */
+  color: var(--cor-texto-sobre-fundo-escuro); /* Texto dos inputs claro */
 }
 
 .form-contato button {
@@ -794,42 +838,57 @@ footer {
 }
 
 .form-contato button:hover {
-  background: var(--cor-fundo-secundario-escuro); /* Hover mais escuro */
+  background: var(--cor-fundo-principal-escuro); /* Hover mais escuro e roxo */
 }
 
 /* Estilos para a seção Abrir Chamado */
 .container-chamado {
   max-width: 800px;
   margin: 40px auto;
-  padding: 30px 40px; /* Aumentado o padding para mais respiro */
-  background-color: var(--cor-fundo-conteudo-sutil, #f9f9f9); /* Usando variável ou fallback */
-  border-radius: 12px; /* Consistente com outros cards */
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15); /* Sombra mais suave e moderna */
-  color: #333; /* Cor de texto padrão para esta seção clara */
+  padding: 30px 40px;
+  background-color: var(--cor-fundo-conteudo-sutil); /* Fundo claro para esta seção */
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  color: #333; /* Texto escuro para contraste com fundo claro */
+}
+
+@media (max-width: 768px) {
+  .container-chamado {
+    padding: 2rem 1.5rem;
+    margin-left: 1rem; /* Adiciona margem lateral para não colar nas bordas */
+    margin-right: 1rem;
+    width: auto; /* Permite que o container se ajuste dentro das margens */
+  }
+  .hero-main-logo-img {
+    max-width: 100px; /* Aumentando o logo na Hero em mobile */
+  }
+  .hero-main-logo-text {
+    font-size: 2.2rem; /* Aumentando o texto do logo na Hero em mobile */
+  }
 }
 
 .container-chamado h2 {
   text-align: center;
-  color: var(--cor-fundo-principal-escuro, #333); /* Cor do título, pode ser mais escura */
-  margin-bottom: 15px; /* Ajustado */
+  color: var(--cor-texto-titulo-secao-clara); /* Título escuro */
+  margin-bottom: 15px;
 }
 
 .container-chamado p {
   text-align: center;
-  color: #555;
+  color: #555; /* Texto do parágrafo escuro */
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
 .container-chamado .form-group {
-  margin-bottom: 20px; /* Espaçamento entre grupos de formulário */
+  margin-bottom: 20px;
 }
 
 .container-chamado label {
   display: block;
-  margin-bottom: 8px; /* Espaçamento entre label e input */
+  margin-bottom: 8px;
   font-weight: 600;
-  color: #444;
+  color: #444; /* Labels escuros */
 }
 
 .container-chamado input[type="text"],
@@ -838,22 +897,66 @@ footer {
 .container-chamado select,
 .container-chamado textarea {
   width: 100%;
-  padding: 12px 15px; /* Padding interno dos campos */
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-radius: 6px; /* Bordas levemente arredondadas */
+  border-radius: 6px;
   font-size: 1rem;
+  background-color: #fff; /* Fundo branco para inputs nesta seção clara */
+  color: #333; /* Texto escuro para inputs */
+}
+.container-chamado select option { /* Estilo para as opções do select nesta seção */
+    background-color: #fff;
+    color: #333;
 }
 
 .container-chamado .g-recaptcha {
-  margin-bottom: 25px; /* Espaçamento abaixo do reCAPTCHA */
-  display: flex; /* Para centralizar se necessário */
-  justify-content: center; /* Centraliza o widget do reCAPTCHA */
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 .container-chamado button.btn-filled {
   display: block;
   width: 100%;
   padding: 12px;
-  font-size: 1.1rem; /* Tamanho da fonte do botão */
-  /* Outros estilos de .btn-filled serão herdados */
+  font-size: 1.1rem;
+  /* Reutiliza estilos de .btn-filled, mas pode precisar de ajustes de cor se o fundo for claro */
+  background-color: var(--cor-fundo-principal-escuro); /* Botão roxo escuro */
+  color: var(--cor-texto-sobre-fundo-escuro); /* Texto branco no botão */
+}
+.container-chamado button.btn-filled:hover {
+  background-color: var(--cor-fundo-secundario-escuro); /* Roxo um pouco mais claro no hover */
+}
+
+/* Ajustes gerais de responsividade para Hero e outros elementos */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    margin-bottom: 2rem;
+    flex-basis: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .contato-opcoes-container {
+    flex-direction: column; /* Empilha os botões de contato em telas menores */
+    align-items: center;
+    gap: 20px;
+  }
+  .contato-opcao {
+    min-width: auto; /* Remove min-width para empilhamento */
+    width: 90%; /* Ocupa mais da largura disponível */
+    max-width: 320px; /* Limita a largura máxima */
+  }
 }

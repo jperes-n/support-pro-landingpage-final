@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Opcional: verificar preferência de movimento reduzido no JS também,
   // embora o CSS já lide com isso de forma robusta.
-  // const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // const prefersReducedMotion =       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // if (prefersReducedMotion) {
   //   elementsToAnimate.forEach(el => {
   //     el.classList.remove('js-scroll-trigger'); // Remove a classe para não ser processado pelo observer
@@ -60,4 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
   //   }
   //   return; // Não configura o observer se movimento reduzido for preferido
   // }
+
+  // Lógica para o menu hamburger
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  const navMenuContainer = document.querySelector('.nav-menu-container'); // Seleciona o novo container
+
+  if (navbarToggler && navMenuContainer) {
+    navbarToggler.addEventListener('click', () => {
+      navMenuContainer.classList.toggle('active');
+      // Opcional: alternar ícone do hamburger (bars/times)
+      // navbarToggler.querySelector('i').classList.toggle('fa-bars');
+      // navbarToggler.querySelector('i').classList.toggle('fa-times');
+    });
+  }
 });
